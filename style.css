@@ -1,21 +1,33 @@
 :root {
+  --bg: #f5f4fb;
   --primary: #1c5cbe;
   --primary100: #1351ae;
   --primary200: #104697;
   --primary300: #0e3c81;
   --primaryLight: #aac8ff;
   --primaryLight100: #5591fe;
+  --primaryLight200: #4486ff;
+  --grey: #bec9d0;
+  --greyLight: #ebf1f6;
+  --black: #000;
+  --white: #fff;
   --rounded: 50px;
 }
-
-/* @media (prefers-color-scheme: dark) {
+/* 
+@media (prefers-color-scheme: dark) {
   :root {
+    --bg: #051020;
     --primary: #0f356b;
     --primary100: #0c2d59;
     --primary200: #092447;
     --primary300: #061b35;
     --primaryLight: #3b67a3;
     --primaryLight100: #6d95cf;
+    --primaryLight200: #5a94ff;
+    --grey: #4a5662;
+    --greyLight: #1b232c;
+    --black: #fff;
+    --white: #0f141a;
   }
 } */
 
@@ -32,13 +44,59 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  background-color: var(--bg);
 }
 button {
+  cursor: pointer;
   border: none;
+  background-color: inherit;
   transition: all 0.1s;
   &:focus-visible {
     outline: 2px solid var(--primaryLight);
   }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+  border: 1px solid var(--grey);
+  outline: none;
+  background-color: var(--white);
+  padding: 12px 15px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--black);
+  &::placeholder {
+    color: var(--grey);
+  }
+  &:focus-visible {
+    border: 1px solid var(--primaryLight100);
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.layoutWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.layout {
+  max-width: 1440px;
+  width: 100%;
+}
+.headerWrapper {
+  background-color: var(--primary);
+  border-bottom: 5px solid var(--primary100);
 }
 
 .header {
@@ -46,9 +104,8 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: var(--primary);
-  border-bottom: 5px solid var(--primary100);
 }
+
 .header p,
 .header h3,
 .header h6,
@@ -61,7 +118,7 @@ button {
 }
 
 .headerTab {
-  padding: 30.5px;
+  padding: 31px;
   margin: -25px;
   transition: all 0.3s;
   border-bottom: 5px solid var(--primaryLight100);
@@ -77,7 +134,6 @@ button {
   border-radius: var(--rounded);
   background-color: var(--primary100);
   padding: 10px 14px;
-  cursor: pointer;
   & span {
     font-size: 10px;
     font-weight: 400;
@@ -109,7 +165,7 @@ button {
   border-radius: var(--rounded);
   background-color: var(--primary100);
   padding: 3px 14px 3px 3px;
-  cursor: pointer;
+
   & span {
     font-size: 10px;
     font-weight: 400;
@@ -123,7 +179,7 @@ button {
   }
 }
 .profileImgWrapper {
-  background-color: white;
+  background-color: var(--white);
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -139,4 +195,149 @@ button {
 
 .shutDownBtn {
   padding: 10px;
+}
+
+.mainSection {
+  padding: 15px 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.leftSection {
+  max-width: 500px;
+  width: 100%;
+}
+
+input[name="searchTab"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.searchUserTabWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.searchUserTab {
+  transition: all 0.1s ease-in;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 3px solid transparent;
+  color: var(--grey);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#advanced:focus-visible ~ .searchUserTabWrapper label[for="advanced"],
+#basic:focus-visible ~ .searchUserTabWrapper label[for="basic"] {
+  outline: 2px solid var(--primaryLight100);
+  outline-offset: 1px;
+}
+
+#basic:checked ~ .searchUserTabWrapper label[for="basic"],
+#advanced:checked ~ .searchUserTabWrapper label[for="advanced"] {
+  border-bottom: 3px solid var(--primaryLight100);
+  color: var(--black);
+}
+
+.searchCard {
+  display: none;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--greyLight);
+  flex-direction: column;
+  gap: 20px;
+}
+
+#basic:checked ~ #basicSearchCard {
+  display: flex;
+}
+
+#advanced:checked ~ #advancedSearchCard {
+  display: flex;
+}
+
+.searchCard {
+  display: none;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--greyLight);
+  flex-direction: column;
+  gap: 20px;
+}
+.searchInputWrapper {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  cursor: text;
+}
+.basicSearchInput {
+  padding: 12px 15px 12px 48px !important;
+}
+
+.searchBtn {
+  text-align: center;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: var(--white);
+  background-color: var(--primaryLight100);
+  &:hover {
+    background-color: var(--primaryLight200);
+  }
+  &:active {
+    background-color: var(--primaryLight100);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--grey);
+  }
+}
+.advancedForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formInputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.advancedFormRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.select {
+  position: relative;
+}
+.select select {
+  width: 300px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.select::after {
+  content: "▼";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.department select {
+  width: 100%;
 }

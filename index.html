@@ -7,35 +7,142 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="header">
-      <div>
-        <h6 class="title">LEVEREX</h6>
-        <h3 class="subTitle">EMPLOYEE SERVICES</h3>
-      </div>
-      <div class="headerTab">
-        <p>Address Book</p>
-      </div>
-      <nav class="headerNav">
-        <div class="info">
-          <button class="btn">
-            <img src="/assets/svgs/question.svg" alt="question" />
-            <span>SUPPORT</span>
+    <header class="headerWrapper layoutWrapper">
+      <div class="header layout">
+        <div>
+          <h6 class="title">LEVEREX</h6>
+          <h3 class="subTitle">EMPLOYEE SERVICES</h3>
+        </div>
+        <div class="headerTab">
+          <p>Address Book</p>
+        </div>
+        <nav class="headerNav">
+          <div class="info">
+            <button class="btn">
+              <img src="/assets/svgs/question.svg" alt="question" />
+              <span>SUPPORT</span>
+            </button>
+            <button class="profile">
+              <div class="profileImgWrapper">
+                <img
+                  class="profileImg"
+                  src="/assets/images/profileImage4.png"
+                  alt="profile"
+                />
+              </div>
+              <span>STEVE COOK</span>
+            </button>
+          </div>
+          <button class="btn shutDownBtn">
+            <img src="/assets/svgs/shutDown.svg" alt="shut down image" />
           </button>
-          <button class="profile">
-            <div class="profileImgWrapper">
-              <img
-                class="profileImg"
-                src="/assets/images/profileImage4.png"
-                alt="profile"
+        </nav>
+      </div>
+    </header>
+    <section class="layoutWrapper">
+      <div class="layout mainSection">
+        <div class="leftSection">
+          <input type="radio" name="searchTab" id="basic" checked />
+          <input type="radio" name="searchTab" id="advanced" />
+
+          <div class="searchUserTabWrapper">
+            <label for="basic" class="searchUserTab">BASIC SEARCH</label>
+            <label for="advanced" class="searchUserTab">ADVANCED SEARCH</label>
+          </div>
+
+          <form action="/" class="searchCard" id="basicSearchCard">
+            <div class="searchInputWrapper">
+              <label for="search" class="searchIcon">
+                <img src="/assets/svgs/search.svg" alt="search" />
+              </label>
+              <input
+                class="basicSearchInput"
+                type="text"
+                name="search"
+                id="search"
+                placeholder="John Smith"
               />
             </div>
-            <span>STEVE COOK</span>
-          </button>
+            <button type="submit" class="searchBtn">SEARCH</button>
+          </form>
+
+          <form class="searchCard" id="advancedSearchCard">
+            <div class="advancedForm">
+              <div class="formInputWrapper">
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  placeholder="John Smith"
+                  type="text"
+                />
+              </div>
+              <div class="formInputWrapper">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  placeholder="John.Smith@gmail.com"
+                  type="email"
+                />
+              </div>
+              <div class="advancedFormRow">
+                <div class="formInputWrapper">
+                  <label for="number">Number</label>
+                  <input
+                    id="number"
+                    name="number"
+                    placeholder="Number"
+                    type="number"
+                  />
+                </div>
+                <div class="formInputWrapper">
+                  <label for="skype">Skype</label>
+                  <input
+                    id="skype"
+                    name="skype"
+                    placeholder="SkypeID"
+                    type="number"
+                  />
+                </div>
+              </div>
+              <div class="advancedFormRow">
+                <div class="formInputWrapper">
+                  <label for="building">Building</label>
+                  <div class="select">
+                    <select name="building" id="building">
+                      <option value="volvo">Any</option>
+                      <option value="saab">Saab</option>
+                      <option value="mercedes">Mercedes</option>
+                      <option value="audi">Audi</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="formInputWrapper">
+                  <label for="room">Room</label>
+                  <input
+                    id="room"
+                    name="room"
+                    placeholder="303.1"
+                    type="number"
+                  />
+                </div>
+              </div>
+              <div class="formInputWrapper">
+                <label for="department">Department</label>
+                <div class="select department">
+                  <select name="department" id="department">
+                    <option value="volvo">Any</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </select>
+                </div>
+            </div>
+            <button type="submit" class="searchBtn">SEARCH</button>
+          </form>
         </div>
-        <button class="btn shutDownBtn">
-          <img src="/assets/svgs/shutDown.svg" alt="shut down image" />
-        </button>
-      </nav>
-    </header>
+      </div>
+    </section>
   </body>
 </html>
